@@ -1,22 +1,16 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const StudentSchema = Schema({
-  id: {
-    type: String,
-    required: true,
-    unique: true
-  },
-  name: {
-    type: String,
-    required: true
-  },
-  subjects: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Subject"
-    }
-  ]
+const subjectRefSchema = new Schema({
+  _id: { type: String, ref: "Subject" } // reference to Subject model
 });
 
-module.exports = mongoose.model("Student", StudentSchema);
+const studentSchema = new Schema({
+  _id: { type: String, required: true },
+  fullName: { type: String, required: true },
+  className: { type: String, required: true },
+  subjects: [subjectRefSchema]
+});
+
+const Student = mongoose.model("Student", studentSchema);
+module.exports = Student;

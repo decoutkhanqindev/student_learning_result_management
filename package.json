@@ -1,0 +1,15 @@
+{
+  "name": "learning_results_project",
+  "version": "1.0.0",
+  "description": "learning results project",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "decoutkhanqindev",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.21.2"
+  }
+}

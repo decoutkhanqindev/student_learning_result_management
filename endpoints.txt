@@ -1,0 +1,27 @@
+GET /students: Get all student information.
+
+GET /students/:id: Get student information by ID.
+
+POST /students: Add new student.
+
+PUT /students/:id: Update student information.
+
+DELETE /students/:id: Delete student by ID.
+
+GET /subjects: Get all subjects.
+
+GET /subjects/:id: Get subject information by ID.
+
+POST /subjects: Add new subject.
+
+PUT /subjects/:id: Update subject.
+
+DELETE /subjects/:id: Delete subject by ID.
+
+GET /grades/:student_id/:subject_id: Get student scores by subject.
+
+POST /grades: Add student scores (by subject).
+
+PUT /grades/:id: Update scores.
+
+DELETE /grades/:id: Delete student grades.

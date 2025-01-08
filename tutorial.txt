@@ -1,0 +1,144 @@
+### 1. **`config`**
+- **Role:** Stores configuration files and environment-specific settings.
+- **Contents:**
+  - Database connection settings (e.g., MongoDB URI).
+  - External service configurations (e.g., APIs, third-party services).
+  - Server configurations like port number, environment variables, etc.
+  - Configuration for things like authentication, JWT secret, or other global settings.
+  
+  Example: 
+  - `config/mongodb.js` for setting up the MongoDB connection.
+  - `config/env.js` for loading environment variables from `.env`.
+
+### 2. **`controllers`**
+- **Role:** Contains logic that handles requests and responses. Each controller corresponds 
+to a resource or entity in your application.
+- **Contents:**
+  - Functions that handle HTTP requests (`GET`, `POST`, `PUT`, `DELETE`) for specific routes.
+  - Typically communicates with services and models to fetch, create, update, or delete data, 
+  and then returns the results in the response.
+  
+  Example: 
+  - `controllers/userController.js` to handle user registration, login, etc.
+  - `controllers/productController.js` for product-related operations.
+
+### 3. **`helpers`**
+- **Role:** Contains utility functions or helper methods that are used across different parts 
+of the application.
+- **Contents:**
+  - Helper functions for things like formatting data, validation, date/time manipulation, etc.
+  - Custom functions that simplify commonly used operations, reducing repetitive code.
+  
+  Example: 
+  - `helpers/validation.js` for input validation functions.
+  - `helpers/logger.js` to set up a logger for the application.
+
+### 4. **`middlewares`**
+- **Role:** Holds middleware functions that process requests before they reach the controllers.
+- **Contents:**
+  - Functions that intercept HTTP requests for purposes such as authentication, logging, validation, etc.
+  - Middleware functions are executed sequentially before reaching the route handler in the controller.
+  
+  Example:
+  - `middlewares/authMiddleware.js` to verify user authentication via JWT.
+  - `middlewares/errorHandler.js` to handle errors globally.
+
+### 5. **`models`**
+- **Role:** Defines the data structure for your application and interacts with the database (MongoDB in this case).
+- **Contents:**
+  - Mongoose models that define the schema for each entity in the application (e.g., User, Product, Order).
+  - Methods to interact with MongoDB, like `find()`, `save()`, `update()`, etc.
+  
+  Example:
+  - `models/userModel.js` for defining the schema and model for users.
+  - `models/productModel.js` for defining the schema and model for products.
+
+### 6. **`public`**
+- **Role:** Stores static files that are accessible to the client (browser).
+- **Contents:**
+  - Static assets like images, CSS files, JavaScript files, fonts, etc.
+  - These files are served directly to the client without any backend processing.
+  
+  Example:
+  - `public/css/` for CSS files.
+  - `public/images/` for image files.
+
+### 7. **`routes`**
+- **Role:** Defines the API routes that handle incoming requests and map them to the 
+corresponding controllers.
+- **Contents:**
+  - Route definitions, where you specify HTTP methods (GET, POST, etc.) and the corresponding 
+  controllers to handle them.
+  - Organizes routes for each resource in the application (e.g., `/users`, `/products`).
+  
+  Example:
+  - `routes/userRoutes.js` for routes related to user operations (login, register).
+  - `routes/productRoutes.js` for routes related to product operations.
+
+### 8. **`services`**
+- **Role:** Contains business logic or complex operations that need to be reused by 
+multiple controllers.
+- **Contents:**
+  - Functions that handle the core application logic, such as interacting with multiple models or 
+  performing operations across multiple resources.
+  - Service functions typically help keep controllers focused on routing logic, while services 
+  handle the "heavy lifting."
+  
+  Example:
+  - `services/authService.js` for handling authentication logic (JWT generation, password hashing).
+  - `services/productService.js` for handling product-specific logic (calculating discounts, handling inventory).
+
+### 9. **`views`**
+- **Role:** Contains templates that are rendered to generate HTML content dynamically (if using 
+server-side rendering with view engines like EJS, Pug, etc.).
+- **Contents:**
+  - HTML templates or views that render data from the server dynamically.
+  - These are used if you're building a web app that serves HTML pages, rather than just an API.
+
+  Example:
+  - `views/index.ejs` for the main page of your application.
+  - `views/login.ejs` for the login page.
+
+---
+
+### MVC Structure Example
+
+For example, in an e-commerce app, you might have the following files:
+
+```
+/config
+  - mongodb.js          # MongoDB connection setup
+  - env.js              # Environment variable setup
+
+/controllers
+  - userController.js    # Controller for user-related routes
+  - productController.js # Controller for product-related routes
+
+/helpers
+  - validation.js        # Helper functions for validating inputs
+  - logger.js            # Logger for logging messages
+
+/middlewares
+  - authMiddleware.js    # Middleware to check authentication
+
+/models
+  - userModel.js         # Mongoose model for users
+  - productModel.js      # Mongoose model for products
+
+/public
+  - css/                 # Static CSS files
+  - images/              # Static image files
+
+/routes
+  - userRoutes.js        # API routes for user-related actions
+  - productRoutes.js     # API routes for product-related actions
+
+/services
+  - authService.js       # Business logic for authentication (JWT, password hashing)
+  - productService.js    # Business logic for product management
+
+/views
+  - index.ejs            # Main HTML view (if using server-side rendering)
+  - login.ejs            # Login page HTML
+```
+

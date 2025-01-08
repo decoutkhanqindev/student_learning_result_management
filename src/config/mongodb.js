@@ -8,10 +8,10 @@ const connect = (uri) => {
   mongoose
     .connect(uri)
     .then(() => {
-      console.log(">>> Database connected successful.");
+      console.log("\n>>> Database connected successful.");
     })
     .catch((error) => {
-      console.log(`>>> Database connected failed:\n${error}.`);
+      console.log(`\n>>> Database connected failed:\n${error}.`);
       throw error;
     });
 };

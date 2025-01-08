@@ -4,12 +4,12 @@
     "name": "Nguyen Van A",
     "subjects": [
       {
-        "id": "sj01",
+        "_id": "sj01",
         "name": "Math",
         "avg": 8.5
       },
       {
-        "id": "sj02",
+        "_id": "sj02",
         "name": "Physics",
         "avg": 7.0
       }
@@ -20,12 +20,12 @@
     "name": "Le Thi B",
     "subjects": [
       {
-        "id": "sj03",
+        "_id": "sj03",
         "name": "Chemistry",
         "avg": 9.0
       },
       {
-        "id": "sj04",
+        "_id": "sj04",
         "name": "Biology",
         "avg": 6.5
       }
@@ -36,7 +36,7 @@
     "name": "Tran Van C",
     "subjects": [
       {
-        "id": "sj05",
+        "_id": "sj05",
         "name": "English",
         "avg": 7.5
       }

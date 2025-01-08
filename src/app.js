@@ -1,11 +1,19 @@
 const dotenv = require("dotenv");
 const express = require("express");
+const bodyParser = require("body-parser");
+const connectDb = require("./config/mongodb")
 
+const app = express();
 dotenv.config();
 const env = process.env;
-const app = express();
-const port = env.PORT || 8080;
+const PORT = env.PORT || 8080;
+const MONGO_DB_URI = env.MONGO_DB_URI
 
-app.listen(port, () => {
-  console.log(`Server is running at port ${port}`);
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+connectDb(MONGO_DB_URI);
+
+app.listen(PORT, () => {
+  console.log(`>>> Server is running on port ${PORT}.`);
 });

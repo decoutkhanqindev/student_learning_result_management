@@ -1,0 +1,14 @@
+[
+  {
+    "_id": "SJ001",
+    "subject_code": "IT001",
+    "subject_name": "Subject A",
+    "teacher": "Teacher A"
+  },
+  {
+    "_id": "SJ002",
+    "subject_code": "IT002",
+    "subject_name": "Subject B",
+    "teacher": "Teacher B"
+  }
+]

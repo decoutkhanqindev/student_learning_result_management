@@ -1,0 +1,25 @@
+[
+  {
+    "_id": "S001",
+    "full_name": "Student A",
+    "class": "DHCNTT17ATT",
+    "subjects": [
+      {
+        "_id": "SJ001"
+      },
+      {
+        "_id": "SJ002"
+      }
+    ]
+  },
+  {
+    "_id": "S002",
+    "full_name": "Student B",
+    "class": "DHCNTT17BTT",
+    "subjects": [
+      {
+        "_id": "SJ002"
+      }
+    ]
+  }
+]

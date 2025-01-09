@@ -1,12 +1,11 @@
 const studentService = require("../services/studentService");
-const Student = require("../models/studentModel");
 
 class StudentController {
   static async getAllStudentController(req, res) {
     try {
       console.log("\n>>> getAllStudentController is called.");
       const students = await studentService.getAllStudentsService();
-      if (!students) {
+      if (!students.length) {
         res.status(404).json({ message: "No student found here." });
       } else {
         res.status(200).json(students);
@@ -62,7 +61,7 @@ class StudentController {
     }
   }
 
-  static async updateStudentController(req, res) {
+  static async updateStudentByIdController(req, res) {
     try {
       console.log("\n>>> updateStudentController is called.");
       let id = req.params.id;
@@ -71,7 +70,7 @@ class StudentController {
       if (!currentStudent) {
         res.status(404).json({ message: `No student with ${id} found.` });
       } else {
-        const updatedStudent = await studentService.updateStudentService(
+        const updatedStudent = await studentService.updateStudentByIdService(
           id,
           studentData
         );

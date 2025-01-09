@@ -31,7 +31,7 @@ class StudentService {
     }
   }
 
-  static async updateStudentService(id, studentData) {
+  static async updateStudentByIdService(id, studentData) {
     try {
       console.log("\n>>> updateStudentService is called.");
       const updatedStudent = await Student.findByIdAndUpdate(

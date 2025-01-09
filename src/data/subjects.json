@@ -1,13 +1,11 @@
 [
   {
     "_id": "SJ001",
-    "subjectCode": "IT001",
-    "subjectCame": "Subject A",
+    "subjectName": "Subject A",
     "teacher": "Teacher A"
   },
   {
     "_id": "SJ002",
-    "subjectCode": "IT002",
     "subjectName": "Subject B",
     "teacher": "Teacher B"
   }

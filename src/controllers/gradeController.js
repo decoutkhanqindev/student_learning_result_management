@@ -68,7 +68,7 @@ class GradeController {
       console.log("\n>>> addGradeController is called.");
       const { studentId, subjectId, averageScore } = req.body;
       // check input data is empty or not
-      if (!studentId || !subjectId || !averageScore) {
+      if (!studentId.trim() || !subjectId.trim() || !averageScore.trim()) {
         res.status(400).json({ message: "Incorrect grade data in body." });
       } else {
         // check new grade is already exists or not

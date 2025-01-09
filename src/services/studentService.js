@@ -8,6 +8,7 @@ class StudentService {
       return students;
     } catch (error) {
       console.log("\n>>> getAllStudentsService have error: " + error.message);
+      throw error;
     }
   }
 
@@ -18,6 +19,7 @@ class StudentService {
       return student;
     } catch (error) {
       console.log("\n>>> getStudentByIdService have error: " + error.message);
+      throw error;
     }
   }
 
@@ -31,6 +33,7 @@ class StudentService {
       console.log(
         "\n>>> getAllSubjectIdsByIdService have error: " + error.message
       );
+      throw error;
     }
   }
 
@@ -41,6 +44,7 @@ class StudentService {
       return await newStudent.save();
     } catch (error) {
       console.log("\n>>> addStudentService have error: ", error.message);
+      throw error;
     }
   }
 
@@ -50,11 +54,12 @@ class StudentService {
       const updatedStudent = await Student.findByIdAndUpdate(
         _id,
         { fullName, className, subjects },
-        { new: true } // return new document
+        { new: true } // return updated document
       ).select("-__v");
       return updatedStudent;
     } catch (error) {
       console.log("\n>>> updateStudentService have error: ", error.message);
+      throw error;
     }
   }
 
@@ -67,6 +72,7 @@ class StudentService {
       return deletedStudent;
     } catch (error) {
       console.log("\n>>> deleteStudentByIdService have error: ", error.message);
+      throw error;
     }
   }
 }
@@ -78,4 +84,5 @@ module.exports = StudentService;
 //   console.log("\n>>> functionName is called.");
 // } catch (error) {
 //   console.log("\n>>> functionName have error: ", error.message);
+//   throw error;
 // }

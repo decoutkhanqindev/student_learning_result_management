@@ -8,6 +8,7 @@ class GradeService {
       return grades;
     } catch (error) {
       console.log("\n>>> getAllGradesService have error: ", error.message);
+      throw error;
     }
   }
 
@@ -23,6 +24,7 @@ class GradeService {
         "\n>>> getGradeByStudentIdAndSubjectIdService have error: ",
         error.message
       );
+      throw error;
     }
   }
 
@@ -38,6 +40,7 @@ class GradeService {
         "\n>>> getAllGradeByStudentIdService have error: ",
         error.message
       );
+      throw error;
     }
   }
 
@@ -48,6 +51,7 @@ class GradeService {
       return await newGrade.save();
     } catch (error) {
       console.log("\n>>> addScoreService have error: ", error.message);
+      throw error;
     }
   }
 
@@ -71,6 +75,7 @@ class GradeService {
         "\n>>> updateGradeByStudentIdAndSubjectIdService have error: ",
         error.message
       );
+      throw error;
     }
   }
 
@@ -89,6 +94,7 @@ class GradeService {
         "\n>>> deleteGradeByStudentIdAndSubjectIdService have error: ",
         error.message
       );
+      throw error;
     }
   }
 }
@@ -100,4 +106,5 @@ module.exports = GradeService;
 //   console.log("\n>>> functioName is called.");
 // } catch (error) {
 //   console.log("\n>>> functioName have error: ", error.message);
+//   throw error;
 // }

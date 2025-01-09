@@ -19,7 +19,7 @@ class StudentController {
   static async getStudentByIdController(req, res) {
     try {
       console.log("\n>>> getStudentByIdController is called.");
-      const _id = req.params._id;
+      const _id = req.params.id;
       const student = await studentService.getStudentByIdService(_id);
       if (!student) {
         res.status(404).json({ message: `No student with ${_id} found.` });
@@ -39,7 +39,7 @@ class StudentController {
       console.log("\n>>> addStudentController is called.");
       const { _id, fullName, className, subjects } = req.body;
       // check input data is empty or not
-      if (!_id || !fullName || !className) {
+      if (!_id.trim() || !fullName.trim() || !className.trim()) {
         res.status(400).json({ message: "Incorrect student data in body." });
       } else {
         // check new student is already exists or not
@@ -68,7 +68,7 @@ class StudentController {
   static async updateStudentByIdController(req, res) {
     try {
       console.log("\n>>> updateStudentController is called.");
-      const _id = req.params._id;
+      const _id = req.params.id;
       const { fullName, className, subjects } = req.body;
       const currentStudent = await studentService.getStudentByIdService(_id);
       if (!currentStudent) {
@@ -91,7 +91,7 @@ class StudentController {
   static async deleteStudentByIdController(req, res) {
     try {
       console.log("\n>>> deleteStudentByIdController is called.");
-      const _id = req.params._id;
+      const _id = req.params.id;
       const currentStudent = await studentService.getStudentByIdService(_id);
       if (!currentStudent) {
         res.status(404).json({ message: `No student with ${_id} found.` });

@@ -8,6 +8,7 @@ class SubjectService {
       return subjects;
     } catch (error) {
       console.log("\n>>> getAllSubjectsService have error: ", error.message);
+      throw error;
     }
   }
 
@@ -18,6 +19,7 @@ class SubjectService {
       return subject;
     } catch (error) {
       console.log("\n>>> getSubjectByIdService have error: ", error.message);
+      throw error;
     }
   }
 
@@ -28,6 +30,7 @@ class SubjectService {
       return await newSubject.save();
     } catch (error) {
       console.log("\n>>> addSubjectService have error: ", error.message);
+      throw error;
     }
   }
 
@@ -37,11 +40,12 @@ class SubjectService {
       const updatedSubject = await Subject.findByIdAndUpdate(
         _id,
         { subjectName, teacher },
-        { new: true } // return new document
+        { new: true } // return updated document
       );
       return updatedSubject;
     } catch (error) {
       console.log("\n>>> updateSubjectByIdService have error: ", error.message);
+      throw error;
     }
   }
 
@@ -52,6 +56,7 @@ class SubjectService {
       return deletedSubject;
     } catch (error) {
       console.log("\n>>> deleteSubjectByIdService have error: ", error.message);
+      throw error;
     }
   }
 }
@@ -63,4 +68,5 @@ module.exports = SubjectService;
 //   console.log("\n>>> functioName is called.");
 // } catch (error) {
 //   console.log("\n>>> functioName have error: ", error.message);
+//   throw error;
 // }

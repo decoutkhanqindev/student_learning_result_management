@@ -1,17 +1,17 @@
 [
   {
-    "student_id": "S001",
-    "subject_id": "SJ001",
-    "average_score": 7.75
+    "studentId": "S001",
+    "subjectId": "SJ001",
+    "averageScore": 7.75
   },
   {
-    "student_id": "S001",
-    "subject_id": "SJ002",
-    "average_score": 9.0
+    "studentId": "S001",
+    "subjectId": "SJ002",
+    "averageScore": 9.0
   },
   {
-    "student_id": "S002",
-    "subject_id": "SJ002",
-    "average_score": 7.75
+    "studentId": "S002",
+    "subjectId": "SJ002",
+    "averageScore": 7.75
   }
 ]

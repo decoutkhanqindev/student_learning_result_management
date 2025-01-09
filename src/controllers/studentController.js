@@ -114,8 +114,8 @@ module.exports = StudentController;
 
 // try-catch template
 // try {
-//   console.log("\n>>> functioName is called.");
+//   console.log("\n>>> functionName is called.");
 // } catch (error) {
-//   console.log("\n>>> functioName have error: " + error.message);
+//   console.log("\n>>> functionName have error: " + error.message);
 //   res.status(500).json({ message: error.message });
 // }

@@ -79,10 +79,10 @@ class GradeController {
           );
         if (!currentGrade) {
           // check student have learned subject or not
-          const subjects = await studentService.getAllSubjectIdsByIdService(
+          const subjectIds = await studentService.getAllSubjectIdsByIdService(
             studentId
           );
-          if (!subjects.includes(subjectId)) {
+          if (!subjectIds.includes(subjectId)) {
             res.status(400).json({
               message: `A student with id ${studentId} have not learned subject with id ${subjectId}.`
             });

@@ -19,7 +19,7 @@ router.put("/subject/:_id", subjectController.updateSubjectByIdController);
 router.delete("/subject/:_id", subjectController.deleteSubjectByIdController);
 
 // grade routes
-router.get("/grade/all", gradeController.getAllGradesController)
+router.get("/grade/all", gradeController.getAllGradesController);
 router.get(
   "/grade/:studentId/:subjectId",
   gradeController.getGradeByStudentIdAndSubjectIdController

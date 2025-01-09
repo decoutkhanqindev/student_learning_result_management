@@ -12,7 +12,6 @@ const connect = (uri) => {
     })
     .catch((error) => {
       console.log(`\n>>> Database connected failed:\n${error}.`);
-      throw error;
     });
 };
 

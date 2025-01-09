@@ -25,8 +25,8 @@ class StudentService {
     try {
       console.log("\n>>> getAllSubjectIdsByIdService is called.");
       const student = await this.getStudentByIdService(_id);
-      const subjects = student.subjects.map((subject) => subject._id);
-      return subjects;
+      const subjectIds = student.subjects.map((subject) => subject._id);
+      return subjectIds;
     } catch (error) {
       console.log(
         "\n>>> getAllSubjectIdsByIdService have error: " + error.message
@@ -61,7 +61,9 @@ class StudentService {
   static async deleteStudentByIdService(_id) {
     try {
       console.log("\n>>> deleteStudentByIdService is called.");
-      const deletedStudent = await Student.findByIdAndDelete(_id).select("-__v");
+      const deletedStudent = await Student.findByIdAndDelete(_id).select(
+        "-__v"
+      );
       return deletedStudent;
     } catch (error) {
       console.log("\n>>> deleteStudentByIdService have error: ", error.message);
@@ -73,7 +75,7 @@ module.exports = StudentService;
 
 // try-catch template
 // try {
-//   console.log("\n>>> functioName is called.");
+//   console.log("\n>>> functionName is called.");
 // } catch (error) {
-//   console.log("\n>>> functioName have error: ", error.message);
+//   console.log("\n>>> functionName have error: ", error.message);
 // }

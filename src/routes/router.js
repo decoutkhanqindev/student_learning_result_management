@@ -1,8 +1,15 @@
 const express = require("express");
 const router = express.Router();
+const path = require("path");
+
 const studentController = require("../controllers/studentController");
 const subjectController = require("../controllers/subjectController");
 const gradeController = require("../controllers/gradeController");
+
+// view engine
+router.get("/", (req, res) => {
+  res.render("index.ejs");
+});
 
 // student routes
 router.get("/student/all", studentController.getAllStudentController);

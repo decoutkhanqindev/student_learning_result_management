@@ -4,39 +4,39 @@ class SubjectService {
   static async getAllSubjectsService() {
     try {
       console.log("\n>>> getAllSubjectsService is called.");
-      const subjects = await Subject.find();
+      const subjects = await Subject.find().select("-__v");
       return subjects;
     } catch (error) {
       console.log("\n>>> getAllSubjectsService have error: ", error.message);
     }
   }
 
-  static async getSubjectByIdService(id) {
+  static async getSubjectByIdService(_id) {
     try {
       console.log("\n>>> getSubjectByIdService is called.");
-      const subject = await Subject.findById(id);
+      const subject = await Subject.findById(_id).select("-__v");
       return subject;
     } catch (error) {
       console.log("\n>>> getSubjectByIdService have error: ", error.message);
     }
   }
 
-  static async addSubjectService(subjectData) {
+  static async addSubjectService(_id, subjectName, teacher) {
     try {
       console.log("\n>>> addSubjectService is called.");
-      const newSubject = new Subject(subjectData);
+      const newSubject = new Subject({ _id, subjectName, teacher });
       return await newSubject.save();
     } catch (error) {
       console.log("\n>>> addSubjectService have error: ", error.message);
     }
   }
 
-  static async updateSubjectByIdService(id, subjectData) {
+  static async updateSubjectByIdService(_id, subjectName, teacher) {
     try {
       console.log("\n>>> updateSubjectByIdService is called.");
       const updatedSubject = await Subject.findByIdAndUpdate(
-        id,
-        subjectData,
+        _id,
+        { subjectName, teacher },
         { new: true } // return new document
       );
       return updatedSubject;
@@ -45,10 +45,10 @@ class SubjectService {
     }
   }
 
-  static async deleteSubjectByIdService(id) {
+  static async deleteSubjectByIdService(_id) {
     try {
       console.log("\n>>> deleteSubjectByIdService is called.");
-      const deletedSubject = await Subject.findByIdAndDelete(id);
+      const deletedSubject = await Subject.findByIdAndDelete(_id);
       return deletedSubject;
     } catch (error) {
       console.log("\n>>> deleteSubjectByIdService have error: ", error.message);

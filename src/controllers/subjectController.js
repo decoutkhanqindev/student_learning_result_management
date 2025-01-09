@@ -21,10 +21,10 @@ class SubjectController {
   static async getSubjectByIdController(req, res) {
     try {
       console.log("\n>>> getSubjectByIdController is called.");
-      let id = req.params.id;
-      const subject = await subjectService.getSubjectByIdService(id);
+      const _id = req.params._id;
+      const subject = await subjectService.getSubjectByIdService(_id);
       if (!subject) {
-        res.status(404).json({ message: `No subject with ${id} found.` });
+        res.status(404).json({ message: `No subject with ${_id} found.` });
       } else {
         res.status(200).json(subject);
       }
@@ -39,25 +39,24 @@ class SubjectController {
   static async addSubjectController(req, res) {
     try {
       console.log("\n>>> addSubjectController is called.");
-      const subjectData = req.body;
-      if (
-        !subjectData._id ||
-        !subjectData.subjectName ||
-        !subjectData.teacher
-      ) {
+      const { _id, subjectName, teacher } = req.body;
+      // check input data is empty or not
+      if (!_id || !subjectName || !teacher) {
         res.status(400).json({ message: "Incorrect subject data in body." });
       } else {
-        const currentSubject = await subjectService.getSubjectByIdService(
-          subjectData._id
-        );
+        // check new subject is already exists or not
+        const currentSubject = await subjectService.getSubjectByIdService(_id);
         if (!currentSubject) {
+          // add new subject to db
           const newSubject = await subjectService.addSubjectService(
-            subjectData
+            _id,
+            subjectName,
+            teacher
           );
           res.status(201).json(newSubject);
         } else {
           res.status(400).json({
-            message: `A subject with ${subjectData._id} already exists.`
+            message: `A subject with id ${_id} already exists.`
           });
         }
       }
@@ -70,15 +69,16 @@ class SubjectController {
   static async updateSubjectByIdController(req, res) {
     try {
       console.log("\n>>> updateSubjectByIdController is called.");
-      let id = req.params.id;
-      const subjectData = req.body;
-      const currentSubject = await subjectService.getSubjectByIdService(id);
+      const _id = req.params._id;
+      const { subjectName, teacher } = req.body;
+      const currentSubject = await subjectService.getSubjectByIdService(_id);
       if (!currentSubject) {
-        res.status(404).json({ message: `No student with ${id} found.` });
+        res.status(404).json({ message: `No subject with ${_id} found.` });
       } else {
         const updatedSubject = await subjectService.updateSubjectByIdService(
-          id,
-          subjectData
+          _id,
+          subjectName,
+          teacher
         );
         res.status(200).json(updatedSubject);
       }
@@ -93,13 +93,13 @@ class SubjectController {
   static async deleteSubjectByIdController(req, res) {
     try {
       console.log("\n>>> deleteSubjectByIdController is called.");
-      let id = req.params.id;
-      const currentSubject = await subjectService.getSubjectByIdService(id);
+      const _id = req.params._id;
+      const currentSubject = await subjectService.getSubjectByIdService(_id);
       if (!currentSubject) {
-        res.status(404).json({ message: `No subject with ${id} found.` });
+        res.status(404).json({ message: `No subject with ${_id} found.` });
       } else {
         const deletedStudent = await subjectService.deleteSubjectByIdService(
-          id
+          _id
         );
         res.status(200).json(deletedStudent);
       }

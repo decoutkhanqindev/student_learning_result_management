@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const connect = (uri) => {
+const config = (uri) => {
   mongoose
     .connect(uri)
     .then(() => {
@@ -8,8 +8,8 @@ const connect = (uri) => {
     })
     .catch((error) => {
       console.log(`\n>>> Database connection have error:\n${error}.`);
-      throw error
+      throw error;
     });
 };
 
-module.exports = connect;
+module.exports = config;

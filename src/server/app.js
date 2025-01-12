@@ -1,8 +1,10 @@
 require("dotenv").config();
-const connectDb = require("./config/mongodb");
+const configMongodb = require("./config/configMongodb");
+const configClient = require("./config/configClient");
 const express = require("express");
 const bodyParser = require("body-parser");
-const router = require("./routes/router");
+const apiRouter = require("./routes/apiRouter");
+const clientRouter = require("./routes/clientRouter");
 
 const app = express();
 const env = process.env;
@@ -11,10 +13,12 @@ const MONGO_DB_URI = env.MONGO_DB_URI;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(router);
+app.use(apiRouter);
+app.use(clientRouter);
 
-connectDb(MONGO_DB_URI);
+configMongodb(MONGO_DB_URI);
+configClient(app);
 
 app.listen(PORT, () => {
-  console.log(`\n>>> Server is running on http://localhost:${PORT}/.`);
+  console.log(`\n>>> Server is running at http://localhost:${PORT}/.`);
 });

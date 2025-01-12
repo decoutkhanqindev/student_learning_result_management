@@ -124,7 +124,7 @@ class GradeController {
           message: `No grade with student id ${studentId} and subject id ${subjectId} found.`
         });
       } else {
-        const updatedGrade =
+        const updatedGrade =  
           await gradeService.updateGradeByStudentIdAndSubjectIdService(
             studentId,
             subjectId,

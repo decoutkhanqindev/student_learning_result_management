@@ -1,0 +1,86 @@
+1. Student Collection:
+{
+  _id: ObjectId,
+  studentId: {          // Primary key for querying (e.g., "S001", "S002")
+    type: String,
+    required: true,
+    unique: true
+  },
+  name: String,
+  email: String,
+  dateOfBirth: Date,
+  createdAt: Date,
+  updatedAt: Date
+}
+
+2. Subject Collection:
+{
+  _id: ObjectId,
+  subjectCode: {        // Primary key for querying (e.g., "MATH101", "PHY102")
+    type: String,
+    required: true,
+    unique: true
+  },
+  subjectName: String,
+  description: String,
+  teacher: {
+    teacherId: String,  // Reference to Teacher's teacherId
+    teacherName: String
+  },
+  createdAt: Date,
+  updatedAt: Date
+}
+
+3. Result Collection:
+{
+  _id: ObjectId,
+  resultId: {          // Primary key (e.g., "R001", "R002")
+    type: String,
+    required: true,
+    unique: true
+  },
+  student: {
+    studentId: String,  // Reference to Student's studentId
+    studentName: String
+  },
+  subject: {
+    subjectCode: String, // Reference to Subject's subjectCode
+    subjectName: String
+  },
+  academicYear: String,
+  semester: String,
+  marks: {
+    assignment: Number,
+    midterm: Number,
+    finalExam: Number
+  },
+  totalMarks: Number,
+  grade: String,        // A, B, C, D, F
+  status: String,       // Pass/Fail
+  createdAt: Date,
+  updatedAt: Date
+}
+
+4. Teacher Collection: 
+{
+  _id: ObjectId,
+  teacherId: {         // Primary key (e.g., "T001", "T002")
+    type: String,
+    required: true,
+    unique: true
+  },
+  teacherName: String,
+  email: String,
+  department: String,
+  subjects: [{         // Array of subject codes
+    subjectCode: String,
+    subjectName: String
+  }],
+  createdAt: Date,
+  updatedAt: Date
+}
+
+5. Relationships:
+- One-to-Many relationship between Teacher and Subjects.
+- One-to-Many relationship between Student and Results.
+- One-to-Many relationship between Subjects and Results.

@@ -56,7 +56,7 @@ class SubjectController {
       if (!updatedData.name && !updatedData.description) {
         return res
           .status(400)
-          .json({ message: "At least one field must be updated." });
+          .json({ message: "At least name or description of subject must be updated." });
       }
       const updatedSubject = await subjectService.updateSubjectService(
         subjectId,

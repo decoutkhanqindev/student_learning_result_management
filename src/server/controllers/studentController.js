@@ -38,7 +38,9 @@ class StudentController {
       console.log(`\n>>> addStudentController is called`);
       const newData = req.body;
       if (!newData.name || !newData.major) {
-        return res.status(400).json({ message: "No form data found." });
+        return res
+          .status(400)
+          .json({ message: "Please provide name and major of student." });
       }
       const newStudent = await studentService.addStudentService(newData);
       return res.status(201).json(newStudent);
@@ -56,7 +58,7 @@ class StudentController {
       if (!updatedData.name && !updatedData.major) {
         return res
           .status(400)
-          .json({ message: "At least one field must be provided." });
+          .json({ message: "At least name or major of student must be updated." });
       }
       const updatedStudent = await studentService.updateStudentService(
         studentId,
@@ -99,9 +101,9 @@ class StudentController {
       const { studentId, subjectId } = req.params;
       const subject = await subjectService.getSubjectByIdService(subjectId);
       if (!subject) {
-        return res.status(404).json({
-          message: `No subject with ${subjectId} found.`
-        });
+        return res
+          .status(404)
+          .json({ message: `No subject with ${subjectId} found.` });
       }
       const registeredStudent = await studentService.registerSubjectService(
         studentId,

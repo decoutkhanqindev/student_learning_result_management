@@ -6,8 +6,9 @@
 
 - **Student Management**:
 
-  - View student list in table format..
+  - View student list in table format.
   - Search a student by student id.
+  - View subject list of student in table format.
   - Add a new student.
   - Update student details.
   - Delete a student.

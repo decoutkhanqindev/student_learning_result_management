@@ -19,7 +19,7 @@ const studentSchema = new Schema(
     subjectIds: [
       {
         type: String, // [SJ001, SJ002]
-        ref: "Subject " // reference to Subject model
+        ref: "Subject" // reference to Subject model
       }
     ]
   },

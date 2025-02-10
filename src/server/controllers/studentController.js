@@ -18,6 +18,7 @@ class StudentController {
 
   static async getStudentByIdController(req, res) {
     try {
+      console.log(`\n>>> GET: /admin/student/${req.params.id}`);
       console.log(`\n>>> getStudentByIdController is called`);
       const studentId = req.params.id;
       const student = await studentService.getStudentByIdService(studentId);
@@ -29,6 +30,40 @@ class StudentController {
       return res.status(200).json(student);
     } catch (error) {
       console.log(`\n>>> getStudentByIdController have error:  ${error}.`);
+      return res.status(500).json({ error: `${error}.` });
+    }
+  }
+
+  static async getSubjectsByStudentIdController(req, res) {
+    try {
+      console.log(`\n>>> getSubjectsByStudentIdController is called`);
+      const studentId = req.params.id;
+      const student = await studentService.getStudentByIdService(studentId);
+      if (!student) {
+        return res
+          .status(404)
+          .json({ message: `No student with ${studentId} found.` });
+      }
+      const subjectIds = await studentService.getSubjectsByStudentIdService(
+        studentId
+      );
+      if (!subjectIds.length) {
+        return res
+          .status(404)
+          .json({ message: `No subjects found of student with ${studentId}.` });
+      }
+      // Promise.all help fetch all subjects concurrently
+      const subjects = await Promise.all(
+        subjectIds.map(async (subjectId) => {
+          const subject = await subjectService.getSubjectByIdService(subjectId);
+          return subject;
+        })
+      );
+      return res.status(200).json(subjects);
+    } catch (error) {
+      console.log(
+        `\n>>> getSubjectsByStudentIdController have error:  ${error}.`
+      );
       return res.status(500).json({ error: `${error}.` });
     }
   }
@@ -56,9 +91,9 @@ class StudentController {
       const studentId = req.params.id;
       const updatedData = req.body;
       if (!updatedData.name && !updatedData.major) {
-        return res
-          .status(400)
-          .json({ message: "At least name or major of student must be updated." });
+        return res.status(400).json({
+          message: "At least name or major of student must be updated."
+        });
       }
       const updatedStudent = await studentService.updateStudentService(
         studentId,

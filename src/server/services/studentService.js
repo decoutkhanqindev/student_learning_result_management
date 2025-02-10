@@ -1,4 +1,5 @@
 const Student = require("../models/studentModel");
+const subjectService = require("../service/subjectService");
 
 class StudentService {
   static async getAllStudentsService() {
@@ -19,6 +20,18 @@ class StudentService {
       return student;
     } catch (error) {
       console.log(`\n>>> getStudentByIdService have error:  ${error}.`);
+      throw error;
+    }
+  }
+
+  static async getSubjectsByStudentIdService(studentId) {
+    try {
+      console.log(`\n>>> getSubjectsByStudentIdService is called`);
+      const student = await Student.findOne({ studentId: studentId });
+      const subjectIds = student.subjectIds;
+      return subjectIds;
+    } catch (error) {
+      console.log(`\n>>> getSubjectsByStudentIdService have error:  ${error}.`);
       throw error;
     }
   }

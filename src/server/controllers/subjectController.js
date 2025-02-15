@@ -1,5 +1,5 @@
-const studentService = require("../services/studentService");
 const subjectService = require("../services/subjectService");
+const studentService = require("../services/studentService");
 
 class SubjectController {
   static async getAllSubjectController(req, res) {
@@ -38,7 +38,9 @@ class SubjectController {
       console.log(`\n>>> addSubjectController is called`);
       const newData = req.body;
       if (!newData.name || !newData.description) {
-        return res.status(400).json({ message: "Please provide name and description of subject." });
+        return res
+          .status(400)
+          .json({ message: "Please provide name and description of subject." });
       }
       const newSubject = await subjectService.addSubjectService(newData);
       return res.status(201).json(newSubject);
@@ -56,7 +58,9 @@ class SubjectController {
       if (!updatedData.name && !updatedData.description) {
         return res
           .status(400)
-          .json({ message: "At least name or description of subject must be updated." });
+          .json({
+            message: "At least name or description of subject must be updated."
+          });
       }
       const updatedSubject = await subjectService.updateSubjectService(
         subjectId,

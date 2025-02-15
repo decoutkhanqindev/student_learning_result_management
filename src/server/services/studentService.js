@@ -1,5 +1,4 @@
 const Student = require("../models/studentModel");
-const subjectService = require("../service/subjectService");
 
 class StudentService {
   static async getAllStudentsService() {
